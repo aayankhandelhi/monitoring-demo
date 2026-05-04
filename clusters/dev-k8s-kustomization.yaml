@@ -13,6 +13,22 @@ spec:
     name: flux-system
     namespace: flux-system
 
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: monitoring-setup
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: "./addons/monitoring/setup"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system    
+
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 # kind: Kustomization
